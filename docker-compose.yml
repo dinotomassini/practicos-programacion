@@ -1,0 +1,31 @@
+version: '3'
+services:
+
+  mysql:
+    build:
+      context: ./docker/mysql
+
+#    image: mariadb:10.7
+    container_name: docker-mysql
+    ports:
+      - 33306:3306
+    volumes:
+      - ./data:/var/lib/mysql
+    environment:
+      MYSQL_USER: dino
+      MYSQL_PASSWORD: dino
+      MYSQL_ROOT_PASSWORD: toor
+      MYSQL_DATABASE: alumnos
+    restart: always
+      
+  web:
+    build: 
+      context: ./docker/php
+#    image: php:8.0-apache
+    container_name: docker-php
+    ports:
+      - 80:80
+    volumes:
+      - ./www:/var/www/html     
+    links:
+      - mysql
