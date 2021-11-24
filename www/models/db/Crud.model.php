@@ -1,8 +1,8 @@
 <?php
 
-include '../../config.php';
-include ROOT_DIR . '/models/db/Connection.model.php';
-include ROOT_DIR . '/models/alumno/Alumno.php';
+require_once __DIR__ . "/../../config.php";
+include_once ROOT_DIR . '/models/db/Connection.model.php';
+include_once ROOT_DIR . '/models/alumno/Alumno.php';
 
 class Crud {
 

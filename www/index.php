@@ -1,5 +1,5 @@
 <?php
-include './config.php';
+require_once __DIR__ . '/./config.php';
 include ROOT_DIR . '/views/partials/head.partial.php';
 
 session_start();

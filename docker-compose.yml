@@ -15,7 +15,7 @@ services:
       MYSQL_USER: dino
       MYSQL_PASSWORD: dino
       MYSQL_ROOT_PASSWORD: toor
-      MYSQL_DATABASE: alumnos
+      MYSQL_DATABASE: alumnosdb
     restart: always
       
   web:

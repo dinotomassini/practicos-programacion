@@ -1,10 +1,10 @@
 <?php
 
 class Connection {
-  private const DB_HOST = 'localhost';
+  private const DB_HOST = '172.21.0.2';
   private const DB_USER = 'dino';
   private const DB_PASS = 'dino';
-  private const DB_NAME = 'alumnnos';
+  private const DB_NAME = 'alumnosdb';
   private const DB_PORT = 3306;
   private static $conn = null;
 
@@ -29,7 +29,7 @@ class Connection {
           $stmt->bind_param($typeParams, ...$params);
           $result = $stmt->execute() ? $stmt->get_result() : false;
           if ($result) {
-            $db->disconnect();
+            self::disconnect();
             return $result->fetch_assoc();
           }
         }
@@ -57,18 +57,75 @@ class Connection {
       }
       $error = $db->error;
       $db->disconnect();
-      new Exception("Ocurrio un error durante el proceso de busqueda.\n" . $error);
+      new Exception("Ocurrio un error durante el proceso de listado.\n" . $error);
     } catch (Exception $e) {
       return null;
     }
   }
 
-  public static function ingresar() {
+  public static function ingresar($query, $typeParams, $params = []) {
+    try {
+      $db = self::connect();
+      if ($db) {
+        $stmt = $db->prepare($query);
+        if ($stmt) {
+          $stmt->bind_param($typeParams, ...$params);
+          $result = $stmt->execute() ? $stmt->get_result() : false;
+          if ($result) {
+            $db->disconnect();
+            return $result->fetch_assoc();
+          }
+        }
+      }
+      $error = $db->error;
+      $db->disconnect();
+      new Exception("Ocurrio un error durante el proceso de ingreso.\n" . $error);
+    } catch (Exception $e) {
+      return null;
+    }
   }
 
-  public static function modificar() {
+  public static function modificar($query, $typeParams, $params = []) {
+    try {
+      $db = self::connect();
+      if ($db) {
+        $stmt = $db->prepare($query);
+        if ($stmt) {
+          $stmt->bind_param($typeParams, ...$params);
+          $result = $stmt->execute() ? $stmt->get_result() : false;
+          if ($result) {
+            $db->disconnect();
+            return $result->fetch_assoc();
+          }
+        }
+      }
+      $error = $db->error;
+      $db->disconnect();
+      new Exception("Ocurrio un error durante el proceso de modificacion.\n" . $error);
+    } catch (Exception $e) {
+      return null;
+    }
   }
 
-  public static function eliminar($id) {
+  public static function eliminar($query, $typeParams, $params = []) {
+    try {
+      $db = self::connect();
+      if ($db) {
+        $stmt = $db->prepare($query);
+        if ($stmt) {
+          $stmt->bind_param($typeParams, ...$params);
+          $result = $stmt->execute() ? $stmt->get_result() : false;
+          if ($result) {
+            $db->disconnect();
+            return $result->fetch_assoc();
+          }
+        }
+      }
+      $error = $db->error;
+      $db->disconnect();
+      new Exception("Ocurrio un error durante el proceso de eliminacion.\n" . $error);
+    } catch (Exception $e) {
+      return null;
+    }
   }
 }

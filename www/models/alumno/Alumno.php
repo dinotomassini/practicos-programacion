@@ -1,12 +1,12 @@
 <?php
 
 class Alumno {
-  protected $nombre;
   protected $mail;
+  protected $nombre;
 
-  function __construct($nombre, $mail) {
-    $this->nombre = $nombre;
+  function __construct($mail, $nombre) {
     $this->mail = $mail;
+    $this->nombre = $nombre;
   }
 
   function setNombre($nombre) {
