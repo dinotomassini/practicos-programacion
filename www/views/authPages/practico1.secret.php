@@ -1,8 +1,7 @@
 <?php
+session_start();
 include_once __DIR__ . '/../../config.php';
 include ROOT_DIR . '/views/partials/head.partial.php';
-      session_start();
-
 ?>
 
 <div class="title-head row">

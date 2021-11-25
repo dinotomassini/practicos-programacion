@@ -8,11 +8,11 @@ class Crud {
 
   public static function buscarAlumno($mail) {
     if ($mail) {
-      $query = "SELECT nombre,mail FROM alumnos WHERE mail=?";
+      $query = "SELECT mail,nombre FROM alumnos WHERE mail=?";
       $params = [$mail];
       $datos = Connection::buscar($query, "s", $params);
       if ($datos) {
-        return new Alumno($datos['nombre'], $datos['mail']);
+        return new Alumno($datos['mail'], $datos['nombre']);
       }
     }
     return false;

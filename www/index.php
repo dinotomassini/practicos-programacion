@@ -1,8 +1,8 @@
 <?php
+session_start();
 require_once __DIR__ . '/./config.php';
 include ROOT_DIR . '/views/partials/head.partial.php';
 
-session_start();
 if (isset($_SESSION['mail'])) {
   session_unset();
   session_destroy();

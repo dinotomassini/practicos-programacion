@@ -13,5 +13,5 @@
 
 <body>
 
-  <main id="main-container" class="container bg-dark p-4">
-    <!--  -->
+  <main id="main-container" class="container p-4" style="background-color: white;">
+    <!--  bg-dark -->
