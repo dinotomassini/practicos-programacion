@@ -35,7 +35,7 @@ class Connection {
         }
       }
       $error = $db->error;
-      $db->disconnect();
+      self::disconnect();
       new Exception("Ocurrio un error durante el proceso de busqueda.\n" . $error);
     } catch (Exception $e) {
       return null;
@@ -50,13 +50,13 @@ class Connection {
         if ($stmt) {
           $result = $stmt->execute() ? $stmt->get_result() : false;
           if ($result) {
-            $db->disconnect();
-            return $result->fetch_assoc();
+            self::disconnect();
+            return $result;
           }
         }
       }
       $error = $db->error;
-      $db->disconnect();
+      self::disconnect();
       new Exception("Ocurrio un error durante el proceso de listado.\n" . $error);
     } catch (Exception $e) {
       return null;
@@ -72,13 +72,13 @@ class Connection {
           $stmt->bind_param($typeParams, ...$params);
           $result = $stmt->execute() ? $stmt->get_result() : false;
           if ($result) {
-            $db->disconnect();
+            self::disconnect();
             return $result->fetch_assoc();
           }
         }
       }
       $error = $db->error;
-      $db->disconnect();
+      self::disconnect();
       new Exception("Ocurrio un error durante el proceso de ingreso.\n" . $error);
     } catch (Exception $e) {
       return null;
@@ -94,13 +94,13 @@ class Connection {
           $stmt->bind_param($typeParams, ...$params);
           $result = $stmt->execute() ? $stmt->get_result() : false;
           if ($result) {
-            $db->disconnect();
+            self::disconnect();
             return $result->fetch_assoc();
           }
         }
       }
       $error = $db->error;
-      $db->disconnect();
+      self::disconnect();
       new Exception("Ocurrio un error durante el proceso de modificacion.\n" . $error);
     } catch (Exception $e) {
       return null;
@@ -116,13 +116,13 @@ class Connection {
           $stmt->bind_param($typeParams, ...$params);
           $result = $stmt->execute() ? $stmt->get_result() : false;
           if ($result) {
-            $db->disconnect();
+            self::disconnect();
             return $result->fetch_assoc();
           }
         }
       }
       $error = $db->error;
-      $db->disconnect();
+      self::disconnect();
       new Exception("Ocurrio un error durante el proceso de eliminacion.\n" . $error);
     } catch (Exception $e) {
       return null;
