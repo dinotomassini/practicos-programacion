@@ -1,7 +1,6 @@
 <?php
 require_once __DIR__ . '/../config.php';
 include ROOT_DIR . '/models/db/Crud.model.php';
-// include ROOT_DIR . '/models/alumno/Alumno.php';
 include ROOT_DIR . '/views/partials/head.partial.php';
 ?>
 <!--

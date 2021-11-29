@@ -9,10 +9,18 @@ class Connection {
   private static $conn = null;
 
   private static function connect() {
-    if (is_null(self::$conn)) {
-      self::$conn = new mysqli(self::DB_HOST, self::DB_USER, self::DB_PASS, self::DB_NAME, self::DB_PORT);
+    try {
+      if (is_null(self::$conn)) {
+        self::$conn = new mysqli(self::DB_HOST, self::DB_USER, self::DB_PASS, self::DB_NAME, self::DB_PORT);
+        $error = self::$conn->error;
+        if ($error) {
+          new Exception("Ocurrio un error durante el proceso de conexion con la base de datos.\n" . $error);
+        }
+      }
+      return self::$conn;
+    } catch (Exception $e) {
+      return null;
     }
-    return self::$conn;
   }
 
   private static function disconnect() {

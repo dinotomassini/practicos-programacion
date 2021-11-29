@@ -27,10 +27,29 @@ class Crud {
     return false;
   }
 
-  public static function ingresarAlumno() {
+  public static function ingresarAlumno($mail, $nombre) {
+    if ($mail && $nombre) {
+      $query = "INSERT INTO alumnos VALUES(?,?)";
+      $params = [$mail, $nombre];
+      $datos = Connection::ingresar($query, "ss", $params);
+      if ($datos) {
+        return new Alumno($datos['mail'], $datos['nombre']);
+      }
+      return false;
+
+    }
   }
 
-  public static function modificarAlumno() {
+  public static function modificarAlumno($mail, $nombre) {
+    if ($mail && $nombre) {
+      $alumno = self::buscarAlumno($mail);
+      if ($alumno) {
+        $query = "UPDATE alumnos SET mail=?, nombre=? WHERE mail=?";
+        $params = [$mail, $nombre, $mail];
+        Connection::modificar($query, "sss", $params);
+      }
+    }
+    return false;
   }
 
   public static function eliminarAlumno() {

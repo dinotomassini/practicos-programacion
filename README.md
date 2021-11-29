@@ -50,3 +50,7 @@ Las credenciales por defecto para la conexión son:
 | Usuario | Clave | Base de datos |
 |  :---:  |  :---:|      :---:    |
 | dino    | dino  | alumnosdb     |
+
+---
+
+Repositorio original de [kodetop](https://github.com/kodetop/docker-php-mysql)
