@@ -11,15 +11,25 @@ if (isset($_POST['mail']) && isset($_POST['nombre'])) {
     $alumno = Crud::buscarAlumno($mail);
     if ($alumno) {
       $alumno = Crud::modificarAlumno($mail, $nombre);
-      return $alumno;
+      header("Location: /views/ingresarAlumno.php");
+      // return $alumno;
     }
+  } else {
+    $newAlumno = Crud::ingresarAlumno($mail, $nombre);
+    header("Location: /views/ingresarAlumno.php");
+    // return $newAlumno;
+
   }
 
-  $newAlumno = Crud::ingresarAlumno($mail, $nombre);
-  return $newAlumno;
 }
 
-header("Location: /views/ingresarAlumno.php");
+if (isset($_POST['id'])) {
+  $alumno = Crud::eliminarAlumno($_POST['id']);
+  if ($alumno) {
+    header("Location: /views/ingresarAlumno.php");
+  }
+}
+
 exit();
 
 ?>

@@ -33,7 +33,7 @@ class Crud {
       $params = [$mail, $nombre];
       $datos = Connection::ingresar($query, "ss", $params);
       if ($datos) {
-        return new Alumno($datos['mail'], $datos['nombre']);
+        return new Alumno($mail, $nombre);
       }
       return false;
 
@@ -47,11 +47,23 @@ class Crud {
         $query = "UPDATE alumnos SET mail=?, nombre=? WHERE mail=?";
         $params = [$mail, $nombre, $mail];
         Connection::modificar($query, "sss", $params);
+        return $alumno;
       }
     }
     return false;
   }
 
-  public static function eliminarAlumno() {
+  public static function eliminarAlumno($id) {
+    if ($id) {
+      $alumno = self::buscarAlumno($id);
+      if ($alumno) {
+        $query = "DELETE FROM alumnos WHERE mail=?";
+        $params = [$id];
+        Connection::eliminar($query, "s",$params);
+        return $alumno;
+      }
+    }
+    return false;
   }
+
 }

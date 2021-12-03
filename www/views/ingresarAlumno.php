@@ -58,8 +58,11 @@
               <p class="card-text"><?= $alumno['mail'] ?></p>
             </div>
             <div class="card-footer">
-              <button type="button" name="btnEditar">Editar</button>
-              <button type="button" name="btnEliminar">Eliminar</button>
+              <button type="button" class="btnEditar">Editar</button>
+              <form class="formBorrar" action="/controllers/crud.controller.php" method="POST">
+                <input type="text" name="id" value="<?= $alumno['mail'] ?>" hidden>
+                <button type="submit" class="btnEliminar">Eliminar</button>
+              </form>
             </div>
           </div>
       <?php } ?>
