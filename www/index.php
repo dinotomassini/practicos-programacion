@@ -35,10 +35,11 @@ if (isset($_SESSION['mail'])) {
     <div class="row justify-content-center mb-3">
       <div class="col-6">
         <a class="nav-link btn btn-outline-danger btn-lg" href="/views/ingresarAlumno.php">
-          Ingresar Alumno
+          CRUD Alumnos
         </a>
       </div>
     </div>
+    
     </ul>
   </nav>
 </div>

@@ -50,7 +50,7 @@
         $listaAlumnos = Crud::listarAlumnos();
         foreach ($listaAlumnos as $alumno) {
       ?>
-          <div class="card">
+          <div class="card mb-3">
             <div class="card-header">
               <h3 class="card-title"><?= $alumno['nombre'] ?></h3>
             </div>
