@@ -51,19 +51,32 @@
         foreach ($listaAlumnos as $alumno) {
       ?>
           <div class="card mb-3">
-            <div class="card-header">
-              <h3 class="card-title"><?= $alumno['nombre'] ?></h3>
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="../assets/images/usuario-defecto.webp" class="img-fluid rounded-start" alt="usuario por defecto">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title"><?= $alumno['nombre'] ?></h3>
+                  <p class="card-text"><?= $alumno['mail'] ?></p>
+                  <div class="card-footer">
+                    <div class="d-grid gap-2">
+                      <div class="">
+                        <button type="button" class="w-100 btnEditar btn btn-info">Editar</button>
+                      </div>
+                      <div class="">
+                        <form class="formBorrar d-block" action="/controllers/crud.controller.php" method="POST">
+                          <input type="text" name="id" value="<?= $alumno['mail'] ?>" hidden>
+                          <button type="submit" class="w-100 btnEliminar btn btn-danger">Eliminar</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="card-body">
-              <p class="card-text"><?= $alumno['mail'] ?></p>
-            </div>
-            <div class="card-footer">
-              <button type="button" class="btnEditar">Editar</button>
-              <form class="formBorrar" action="/controllers/crud.controller.php" method="POST">
-                <input type="text" name="id" value="<?= $alumno['mail'] ?>" hidden>
-                <button type="submit" class="btnEliminar">Eliminar</button>
-              </form>
-            </div>
+
+
           </div>
       <?php } ?>
 
